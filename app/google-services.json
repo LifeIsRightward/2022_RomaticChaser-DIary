@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "614866961537",
+    "project_id": "heello-fb69b",
+    "storage_bucket": "heello-fb69b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614866961537:android:bc0814c72bd9368c35b980",
+        "android_client_info": {
+          "package_name": "com.example.kotlinex1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614866961537-7nir2770c6ft1c3e73nhjl708fvnjvf4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kotlinex1",
+            "certificate_hash": "3f9726820f242eb6b8e6fb17dca8ee4cfbb6e9c7"
+          }
+        },
+        {
+          "client_id": "614866961537-u24467r0m4nttghcpj41utjkf1e72o2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFo0Bgvh6tyCox8moTLFV6_hkF8l78ua8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614866961537-u24467r0m4nttghcpj41utjkf1e72o2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

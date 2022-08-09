@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.example.kotlinex1.databinding.ActivityLoginBinding
 import com.example.kotlinex1.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -22,11 +21,12 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        /*setSupportActionBar(binding.toolbar)
         supportActionBar?.title = "낭만파 다이어리"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.toolbar.setTitleTextColor(Color.BLACK)
-        binding.toolbar.setBackgroundColor(Color.GREEN)
+        binding.toolbar.setBackgroundColor(Color.GREEN)*/
+
         auth = FirebaseAuth.getInstance()
 
         binding.RegisterBNT.setOnClickListener {

@@ -1,16 +1,12 @@
 package com.example.kotlinex1
 
-import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlinex1.databinding.ActivityFirstshowBinding
 import com.example.kotlinex1.databinding.ActivityLoginBinding
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -21,7 +17,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-
 
 class LoginActivity : AppCompatActivity() {
 
@@ -38,10 +33,12 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)//이게 원래는 레이아웃으로 괄호안에 들어가야하는데 뷰바인딩을 사용해서 바인딩.루트로 하면 됨
         auth = FirebaseAuth.getInstance()//Firebase 객체 생성
 
-        setSupportActionBar(binding.LoginToolbar)
+        /*setSupportActionBar(binding.LoginToolbar)
         supportActionBar?.title = "낭만파 다이어리"
         binding.LoginToolbar.setTitleTextColor(Color.BLACK)
         binding.LoginToolbar.setBackgroundColor(Color.GREEN)
+         */
+
         //GoogleSignInClient 객체 초기화
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN) //기본 로그인 방식 사용
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -140,6 +137,6 @@ class LoginActivity : AppCompatActivity() {
             }
             //progressBar.visibility = View.GONE
         }
-    }
 
+    }
 }

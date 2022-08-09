@@ -18,11 +18,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.MainToolbar)
+        /*setSupportActionBar(binding.MainToolbar)
         supportActionBar?.title = "낭만파 다이어리"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.MainToolbar.setTitleTextColor(Color.BLACK)
-        binding.MainToolbar.setBackgroundColor(Color.GREEN)
+        binding.MainToolbar.setBackgroundColor(Color.GREEN)*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

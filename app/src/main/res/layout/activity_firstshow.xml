@@ -8,30 +8,34 @@
     android:background="@drawable/mainbackground"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/Start"
+        android:layout_width="260dp"
+        android:layout_height="123dp"
+        android:background="#00ff0000"
+        android:text="Start!!"
+        android:textColor="#149989"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.173"
-        app:srcCompat="@drawable/maintext" />
+        app:layout_constraintVertical_bias="0.83" />
 
-    <Button
-        android:id="@+id/Start"
-        android:layout_width="133dp"
-        android:layout_height="41dp"
-        android:text="Start!!"
-        android:textColor="@color/black"
-        android:backgroundTint="#12AB99"
+    <TextView
+        android:id="@+id/FirstShow_TIitle"
+        android:layout_width="294dp"
+        android:layout_height="70dp"
+        android:text="Romace  Chaser"
+        android:textSize="35sp"
+        android:gravity="center"
+        android:backgroundTint="#286B11"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.871" />
+        app:layout_constraintVertical_bias="0.155" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

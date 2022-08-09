@@ -56,15 +56,15 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx:21.1.0'
     implementation 'com.google.firebase:firebase-analytics:21.1.0' // 파이어베이스 앱 분석
     implementation 'com.google.firebase:firebase-core:21.1.0' // 파이어베이스 코어
-    implementation 'com.google.firebase:firebase-auth:21.0.6' // 파이어베이스 인증
+    implementation 'com.google.firebase:firebase-auth:21.0.7' // 파이어베이스 인증
     implementation 'com.firebaseui:firebase-ui-auth:8.0.1' // 파이어베이스 인증2
     implementation 'com.github.bumptech.glide:glide:4.13.2' // 글라이드 이미지 로딩
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2' // 글라이드 이미지 로딩2
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
 
-    implementation 'com.google.firebase:firebase-bom:30.3.0'
-    implementation 'com.google.firebase:firebase-auth-ktx:21.0.6'
+    implementation 'com.google.firebase:firebase-bom:30.3.2'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.0.7'
     implementation 'com.google.android.gms:play-services-auth:20.2.0'
 
 }

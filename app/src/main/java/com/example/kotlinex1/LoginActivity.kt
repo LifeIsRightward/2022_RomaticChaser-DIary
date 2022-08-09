@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
         //GoogleSignInClient 객체 초기화
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN) //기본 로그인 방식 사용
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken(getString(com.firebase.ui.auth.R.string.default_web_client_id))
             //requestIdToken :필수사항이다. 사용자의 식별값(token)을 사용하겠다.
             //(App이 구글에게 요청)
             .requestEmail()

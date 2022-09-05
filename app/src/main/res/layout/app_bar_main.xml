@@ -12,10 +12,11 @@
         android:theme="@style/Theme.KotlinEX1.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/Navigationtoolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="#49A59A"
+            android:fitsSystemWindows="true"
             app:popupTheme="@style/Theme.KotlinEX1.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>

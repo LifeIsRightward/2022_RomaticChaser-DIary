@@ -1,5 +1,6 @@
 package com.example.kotlinex1
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
@@ -23,18 +24,22 @@ class MainActivity2 : AppCompatActivity() {
 
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        setSupportActionBar(binding.appBarMain.toolbar)
+        setSupportActionBar(binding.appBarMain.Navigationtoolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)//home 프레그먼트의 툴바의 기본설정된 텍스트가 안보이도록 설정
+        binding.appBarMain.Navigationtoolbar.setBackgroundColor(Color.argb(80,0,0,0))
+        binding.appBarMain.fab.setBackgroundColor(Color.argb(80,0,0,0))
 
         binding.appBarMain.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow

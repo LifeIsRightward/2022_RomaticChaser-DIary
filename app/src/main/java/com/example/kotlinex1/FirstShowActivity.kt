@@ -35,6 +35,7 @@ class FirstShowActivity : AppCompatActivity() {
 
         binding.Start.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+            this.finish()
         }
     }
 

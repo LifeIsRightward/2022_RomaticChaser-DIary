@@ -1,4 +1,4 @@
-package com.example.kotlinex1.Fragments.settings
+package com.example.kotlinex1.nav_Fragments.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinex1.databinding.FragmentSettingBinding
 
-class SettingFragment : Fragment() {
+class SettingFragment private constructor() : Fragment() {
+
+    companion object {
+        fun newInstance() = SettingFragment()
+    }
 
     private var _binding: FragmentSettingBinding? = null
 

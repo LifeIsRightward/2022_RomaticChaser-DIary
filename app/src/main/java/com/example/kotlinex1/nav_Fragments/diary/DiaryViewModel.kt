@@ -1,13 +1,13 @@
-package com.example.kotlinex1.Fragments.todolist
+package com.example.kotlinex1.nav_Fragments.diary
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ToDoListViewModel : ViewModel() {
+class DiaryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is gallery Fragment"
+        value = "Diary_Fragment"
     }
     val text: LiveData<String> = _text
 }

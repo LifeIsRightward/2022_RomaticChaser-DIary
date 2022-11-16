@@ -1,4 +1,4 @@
-package com.example.kotlinex1.Fragments.diary
+package com.example.kotlinex1.nav_Fragments.diary
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinex1.R
 import com.example.kotlinex1.databinding.RowCardTemplateBinding
 
+
 class DiaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var data = arrayListOf<DiaryVO>()
+    private var layoutType = 0
 
     var onCardClickListener: ((position: Int) -> Unit)? = null
     var onAction1ClickListener: ((View, position: Int) -> Unit)? = null

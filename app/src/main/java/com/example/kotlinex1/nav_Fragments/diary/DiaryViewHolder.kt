@@ -1,9 +1,7 @@
-package com.example.kotlinex1.Fragments.diary
+package com.example.kotlinex1.nav_Fragments.diary
 
-import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kotlinex1.R
 import com.example.kotlinex1.databinding.RowCardTemplateBinding
 
 class DiaryViewHolder(private val binding: RowCardTemplateBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -13,7 +11,11 @@ class DiaryViewHolder(private val binding: RowCardTemplateBinding) : RecyclerVie
     var onAction2ClickListener: ((View) -> Unit)? = null
 
     fun bind(data: DiaryVO) {
-        binding.imgRowTemp.setImageResource(data.image)
+        if (data.image != 0) {
+            binding.imgRowTemp.setImageResource(data.image)
+        } else {
+            binding.imgRowTemp.visibility = View.GONE
+        }
 
         binding.txtRowTempTitle.text = data.title
         binding.txtRowTempContent.text = data.content

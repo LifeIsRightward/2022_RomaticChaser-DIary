@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="android:statusBarColor">#00000000</item>
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowActivityTransitions">true</item>
     </style>
 
     <style name="Theme.KotlinEX1.NoActionBar">

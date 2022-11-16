@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?android:attr/actionBarSize"
         android:fitsSystemWindows="true"
-        tools:context=".Fragments.profile.ProfileFragment">
+        tools:context=".nav_Fragments.profile.ProfileFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_diary"

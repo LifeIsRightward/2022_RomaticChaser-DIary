@@ -5,30 +5,25 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
-import com.example.kotlinex1.Fragments.diary.DiaryFragment
-import com.example.kotlinex1.Fragments.profile.ProfileFragment
-import com.example.kotlinex1.Fragments.settings.SettingFragment
-import com.example.kotlinex1.Fragments.todolist.ToDoListFragment
+import com.example.kotlinex1.nav_Fragments.diary.DiaryFragment
+import com.example.kotlinex1.nav_Fragments.profile.ProfileFragment
+import com.example.kotlinex1.nav_Fragments.settings.SettingFragment
+import com.example.kotlinex1.nav_Fragments.todolist.ToDoListFragment
 import com.example.kotlinex1.databinding.ActivityMain2Binding
-import kotlin.math.log
 
 
 class MainActivity2 : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMain2Binding
+    private lateinit var toggle: ActionBarDrawerToggle
 
     fun ReplaceFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
@@ -49,10 +44,12 @@ class MainActivity2 : AppCompatActivity() {
         binding.fab.setBackgroundColor(Color.argb(80,0,0,0))
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowCustomEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_action_menu)
 
-        ReplaceFragment(ProfileFragment())
+        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_open)
+        toggle.syncState()
+
+        binding.navView.setCheckedItem(R.id.nav_Profile)
+        ReplaceFragment(ProfileFragment.newInstance())
 
 
         //메일모양 아이콘 ㅇㅇ
@@ -79,12 +76,30 @@ class MainActivity2 : AppCompatActivity() {
             Log.e("error", "${it.itemId}")
 
             when(it.itemId){
-                R.id.nav_Profile -> ReplaceFragment(ProfileFragment())
-                R.id.nav_Diary -> ReplaceFragment(DiaryFragment())
-                R.id.nav_To_Do_List -> ReplaceFragment(ToDoListFragment())
-                R.id.nav_Settings -> ReplaceFragment(SettingFragment())
+                R.id.nav_Profile -> ReplaceFragment(ProfileFragment.newInstance())
+                R.id.nav_Diary -> ReplaceFragment(DiaryFragment.newInstance())
+                R.id.nav_To_Do_List -> ReplaceFragment(ToDoListFragment.newInstance())
+                R.id.nav_Settings -> ReplaceFragment(SettingFragment.newInstance())
             }
+
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
             true
+        }
+    }
+
+    private var backPressedTimeStamp = 0L
+    override fun onBackPressed() {
+        if(binding.navView.checkedItem?.itemId == R.id.nav_Profile){
+            if (System.currentTimeMillis() - backPressedTimeStamp < 2000) {
+                super.onBackPressed()
+            } else {
+                Snackbar.make(binding.root, "뒤로가기 버튼을 한번 더 누르세요.", Snackbar.LENGTH_SHORT)
+                        .show()
+            }
+            backPressedTimeStamp = System.currentTimeMillis()
+        }else{
+            binding.navView.setCheckedItem(R.id.nav_Profile)
+            ReplaceFragment(ProfileFragment.newInstance())
         }
     }
 

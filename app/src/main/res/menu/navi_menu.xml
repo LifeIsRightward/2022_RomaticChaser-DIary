@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/calenderFragment"
+        android:title="일기쓰기"
+        android:icon="@drawable/ic_calendar_month"/>
+
+    <item
+        android:id="@+id/homeFragment"
+        android:title="오늘 한 일"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/myPageFragment"
+        android:title="기분,요약"
+        android:icon="@drawable/ic_emoticon"/>
+
+</menu>

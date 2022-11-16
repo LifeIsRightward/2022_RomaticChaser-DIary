@@ -1,8 +1,11 @@
 package com.example.kotlinex1
 
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -113,7 +116,12 @@ class LoginActivity : AppCompatActivity() {
     fun moveMainPage(user: FirebaseUser?) {
         // 파이어베이스 유저 상태가 있을 경우 다음 페이지로 넘어갈 수 있음
         if (user != null) {
-            startActivity(Intent(this, MainActivity2::class.java))
+            val intent = Intent(this, MainActivity2::class.java)
+            val options = ActivityOptions.makeSceneTransitionAnimation(this, binding.LoginFaceIcon, "imgTransition")
+            startActivity(intent, options.toBundle())
+            Handler(Looper.getMainLooper()).postDelayed({
+                this.finish()
+            }, 3000)
         }
     }
 

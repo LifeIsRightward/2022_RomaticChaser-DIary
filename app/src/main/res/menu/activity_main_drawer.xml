@@ -18,7 +18,7 @@
             android:title="To-Do-List" />
         <item
             android:id="@+id/nav_Settings"
-            android:icon="@drawable/img_1"
+            android:icon="@drawable/summary_note"
             android:title="Settings" />
     </group>
 </menu>

@@ -22,12 +22,11 @@
             <ImageView
                 android:id="@+id/img_row_temp"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
+                android:layout_height="240dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_launcher_background">
+                app:layout_constraintTop_toTopOf="parent">
 
             </ImageView>
 

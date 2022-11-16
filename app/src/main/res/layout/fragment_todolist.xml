@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mainbackground"
-    tools:context=".Fragments.todolist.ToDoListFragment">
+    tools:context=".nav_Fragments.todolist.ToDoListFragment">
 
     <TextView
         android:id="@+id/text_slideshow"

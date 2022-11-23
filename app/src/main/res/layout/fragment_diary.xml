@@ -25,15 +25,19 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fab_diary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:text="다이어리 추가"
+            android:textColor="@color/white"
+            app:icon="@android:drawable/ic_input_add"
+            app:iconTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+        </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

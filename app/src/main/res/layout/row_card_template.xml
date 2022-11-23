@@ -10,9 +10,9 @@
         android:id="@+id/card_row_template"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
         android:layout_margin="8dp"
         android:clipToOutline="false"
+        app:cardCornerRadius="8dp"
         app:cardElevation="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,47 +53,15 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
                 android:alpha="0.6"
                 android:textColor="#000000"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txt_row_temp_title"
                 tools:text="content">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/btn_row_temp_action1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="16dp"
-                android:textColor="@color/purple_500"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_row_temp_content"
-                android:text="Action1">
-
-            </TextView>
-
-            <TextView
-                android:id="@+id/btn_row_temp_action2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="16dp"
-                android:textColor="@color/purple_500"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/btn_row_temp_action1"
-                app:layout_constraintTop_toBottomOf="@+id/txt_row_temp_content"
-                android:text="Action2">
 
             </TextView>
 

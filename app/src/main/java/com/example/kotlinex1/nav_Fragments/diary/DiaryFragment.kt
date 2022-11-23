@@ -4,15 +4,22 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinex1.WriteActivity
 import com.example.kotlinex1.databinding.FragmentDiaryBinding
+import com.example.kotlinex1.db.DiaryDAO
 import java.util.*
 
 class DiaryFragment private constructor() : Fragment() {
@@ -37,13 +44,10 @@ class DiaryFragment private constructor() : Fragment() {
     }
 
     private fun initData() {
-        adapter.data.clear()
-        pref.getStringSet("diaries", setOf())?.let {
-            val array = it.toTypedArray()
-            Arrays.sort(array)
-            array.forEach { item -> adapter.data.add(DiaryVO.convertFromJson(item)) }
-        }
-        adapter.notifyDataSetChanged()
+        Handler(Looper.getMainLooper()).postDelayed({
+            val dao = DiaryDAO.newInstance(requireContext())
+            adapter.data = dao.selectAll()
+        }, 500)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -56,52 +60,52 @@ class DiaryFragment private constructor() : Fragment() {
 
         pref = requireContext().getSharedPreferences("diary", 0)
 
+
         // Adapter 초기화
         adapter = DiaryAdapter()
-        adapter.onCardClickListener = {
-            Toast.makeText(requireContext(), "Card click position $it", Toast.LENGTH_SHORT).show()
-            //인텐트 => 액티비티를 넘겨줘
+        adapter.onCardClickListener = { id, p ->
+            val _id = adapter.data[p]._id
 
-            val intent = Intent(this.requireContext(), WriteActivity::class.java)
-            intent.putExtra("data", adapter.data[it].toString())
-            startActivity(intent)
-            //일기를 작성
+            val intent = Intent(requireContext(), WriteActivity::class.java)
+            intent.putExtra("diaryId", _id)
+            launcher.launch(intent)
         }
-        adapter.onAction1ClickListener = { v, p ->
-            adapter.data.removeAt(p)
-            adapter.notifyDataSetChanged()
-        }
-        adapter.onAction2ClickListener = { v, p ->
-            Toast.makeText(requireContext(), "action2 click position $p", Toast.LENGTH_SHORT).show()
+        adapter.onCardLongClickListener = { id, p ->
+            AlertDialog.Builder(requireContext()).apply {
+                setTitle("일기 삭제")
+                setMessage("이 일기를 삭제하시겠습니까?")
+                setPositiveButton("삭제") { d, _ ->
+                    adapter.remove(p)
+                    DiaryDAO.newInstance(requireContext()).delete(id)
+                    d.dismiss()
+                }
+                setNegativeButton("취소") { d, _ -> d.dismiss()}
+                show()
+            }
         }
         //
         binding.rvDiary.adapter = adapter
         binding.rvDiary.layoutManager = LinearLayoutManager(requireContext())
-
-        binding.fabDiary.setOnClickListener {
-            val position = adapter.data.size
-            // sharedpreference
-            // ArrayList<DiaryVO>
-            // Set<String>
-            adapter.data.add(
-                DiaryVO(
-                        0,
-                    "새 일기 ${adapter.data.size + 1}",
-                    //"날짜${adapter.data.size}"
-                    ""
-                )
-            )
-
-            // Set<DiaryVO> Set<String>
-            val save = arrayListOf<String>()
-            for (d in adapter.data) {
-                save.add(d.toString())
+        binding.rvDiary.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
             }
 
-            val edit = pref.edit()
-            edit.putStringSet("diaries", save.toSet())
-            edit.apply()
-            adapter.notifyItemInserted(position)
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy < 0) {
+                    binding.fabDiary.extend()
+                } else {
+                    binding.fabDiary.shrink()
+                }
+            }
+        })
+
+
+        binding.fabDiary.setOnClickListener {
+            val intent = Intent(requireContext(), WriteActivity::class.java)
+            launcher.launch(intent)
+
         }
 
         binding.fabDiary.setOnLongClickListener {
@@ -113,6 +117,12 @@ class DiaryFragment private constructor() : Fragment() {
         }
 
         return binding.root
+    }
+
+    private val launcher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        initData()
     }
 
     override fun onDestroyView() {

@@ -2,17 +2,23 @@ package com.example.kotlinex1.nav_Fragments.diary
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kotlinex1.R
 import com.example.kotlinex1.databinding.RowCardTemplateBinding
+import com.example.kotlinex1.tool.ImageManager
 
 class DiaryViewHolder(private val binding: RowCardTemplateBinding) : RecyclerView.ViewHolder(binding.root) {
 
+    companion object {
+        const val VIEW_TYPE = R.layout.row_card_template
+    }
+
     var onCardClickListener: (() -> Unit)? = null
-    var onAction1ClickListener: ((View) -> Unit)? = null
-    var onAction2ClickListener: ((View) -> Unit)? = null
+    var onCardLongClickListener: (() -> Unit)? = null
 
     fun bind(data: DiaryVO) {
-        if (data.image != 0) {
-            binding.imgRowTemp.setImageResource(data.image)
+        if (data.image != null) {
+            binding.imgRowTemp.setImageBitmap(ImageManager(binding.root.context).read(data.image!!))
+            binding.imgRowTemp.visibility = View.VISIBLE
         } else {
             binding.imgRowTemp.visibility = View.GONE
         }
@@ -24,12 +30,9 @@ class DiaryViewHolder(private val binding: RowCardTemplateBinding) : RecyclerVie
             onCardClickListener?.let { it() }
         }
 
-        binding.btnRowTempAction1.setOnClickListener { v ->
-            onAction1ClickListener?.let { it(v) }
-        }
-
-        binding.btnRowTempAction2.setOnClickListener { v ->
-            onAction2ClickListener?.let { it(v) }
+        binding.cardRowTemplate.setOnLongClickListener {
+            onCardLongClickListener?.let { it() }
+            true
         }
     }
 

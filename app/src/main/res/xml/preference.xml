@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <Preference>
+
+    </Preference>
+
+    <Preference>
+
+    </Preference>
+
+    <PreferenceCategory android:title="애플리케이션 정보">
+
+        <Preference android:key="pref_version"
+            android:title="애플리케이션 버전"
+            android:summary="1.0.0">
+
+        </Preference>
+
+        <Preference android:key="pref_thanks"
+            android:title="Thanks To"
+            android:summary="MG Choi">
+
+        </Preference>
+
+    </PreferenceCategory>
+
+    <SwitchPreference
+        android:title="자동 로그인">
+
+    </SwitchPreference>
+
+</PreferenceScreen>

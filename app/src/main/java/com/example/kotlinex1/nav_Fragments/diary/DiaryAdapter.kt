@@ -11,11 +11,23 @@ import com.example.kotlinex1.databinding.RowCardTemplateBinding
 class DiaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var data = arrayListOf<DiaryVO>()
+        set(value) {
+            val size = this.data.size
+            this.data.clear()
+            notifyItemRangeRemoved(0, size)
+            this.data.addAll(value)
+            notifyItemRangeInserted(0, value.size)
+        }
+
+    fun remove(position: Int) {
+        this.data.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     private var layoutType = 0
 
-    var onCardClickListener: ((position: Int) -> Unit)? = null
-    var onAction1ClickListener: ((View, position: Int) -> Unit)? = null
-    var onAction2ClickListener: ((View, position: Int) -> Unit)? = null
+    var onCardClickListener: ((_id: Int, position: Int) -> Unit)? = null
+    var onCardLongClickListener: ((_id: Int, position: Int) -> Unit)? = null
 
     // ViewHolder = Row
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -32,13 +44,11 @@ class DiaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             holder.bind(data[position])
 
             holder.onCardClickListener = {
-                onCardClickListener?.let { it (position) }
+                onCardClickListener?.let { it(data[position]._id, holder.adapterPosition) }
             }
-            holder.onAction1ClickListener = { v ->
-                onAction1ClickListener?.let { it(v, position) }
-            }
-            holder.onAction2ClickListener = { v ->
-                onAction2ClickListener?.let { it(v, position) }
+
+            holder.onCardLongClickListener = {
+                onCardLongClickListener?.let { it(data[position]._id, holder.adapterPosition) }
             }
         }
     }
@@ -50,7 +60,7 @@ class DiaryAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     // 어떤 뷰홀더를 쓸거냐
     override fun getItemViewType(position: Int): Int {
         super.getItemViewType(position)
-        return R.layout.row_card_template
+        return position
     }
 
 

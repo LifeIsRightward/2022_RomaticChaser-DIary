@@ -41,7 +41,6 @@ class MainActivity2 : AppCompatActivity() {
         setSupportActionBar(binding.Navigationtoolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)//home 프레그먼트의 툴바의 기본설정된 텍스트가 안보이도록 설정
 //        binding.Navigationtoolbar.setBackgroundColor(Color.argb(80,0,0,0))
-        binding.fab.setBackgroundColor(Color.argb(80,0,0,0))
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -50,13 +49,6 @@ class MainActivity2 : AppCompatActivity() {
 
         binding.navView.setCheckedItem(R.id.nav_Profile)
         ReplaceFragment(ProfileFragment.newInstance())
-
-
-        //메일모양 아이콘 ㅇㅇ
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
 //        val navView: NavigationView = binding.navView

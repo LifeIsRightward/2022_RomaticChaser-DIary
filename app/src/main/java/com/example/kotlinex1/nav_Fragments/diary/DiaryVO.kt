@@ -3,9 +3,11 @@ package com.example.kotlinex1.nav_Fragments.diary
 import com.google.gson.Gson
 
 data class DiaryVO(
-    val image: Int,
-    val title: String,
-    val content: String
+    val _id: Int,
+    var image: String?,
+    var title: String,
+    var content: String,
+    val date: Long
 ): Comparable<DiaryVO> {//gson
 
     companion object {

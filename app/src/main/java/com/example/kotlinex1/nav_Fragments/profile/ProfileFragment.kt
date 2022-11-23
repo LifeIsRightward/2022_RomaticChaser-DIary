@@ -4,8 +4,11 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.ImageDecoder
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +18,10 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import com.example.kotlinex1.R
 import com.example.kotlinex1.databinding.FragmentProfileBinding
+import com.example.kotlinex1.tool.ImageManager
 
 class ProfileFragment private constructor() : Fragment() {
 
@@ -32,10 +37,12 @@ class ProfileFragment private constructor() : Fragment() {
     private val binding get() = _binding!!
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val ProfileViewModel =
-                ViewModelProvider(this).get(ProfileViewModel::class.java)
+            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -51,7 +58,8 @@ class ProfileFragment private constructor() : Fragment() {
             val name = binding.editTextFragmentName.text.toString()
             val age = binding.editTextFragmentAge.text.toString().toInt()
             // 여자이면 true, 남자이면 false
-            val gender = binding.radioGroupFragment.checkedRadioButtonId == R.id.radio_fragment_female
+            val gender =
+                binding.radioGroupFragment.checkedRadioButtonId == R.id.radio_fragment_female
 
             // - Diary
             // ---- [name].xml
@@ -75,15 +83,20 @@ class ProfileFragment private constructor() : Fragment() {
         val pref = requireContext().getSharedPreferences("user", 0)
         val name = pref.getString("name", null)
         val age = pref.getInt("age", -1)
+        val imagePath = pref.getString("image", null)
         val isFemale = pref.getBoolean("isFemale", true)
 
         if (name != null && age != -1) {
             binding.editTextFragmentName.setText(name)
             binding.editTextFragmentAge.setText("$age")
             binding.radioGroupFragment.check(
-                    if (isFemale) R.id.radio_fragment_female
-                    else R.id.radio_fragment_male
+                if (isFemale) R.id.radio_fragment_female
+                else R.id.radio_fragment_male
             )
+            if (imagePath != null) {
+                val bitmap = ImageManager(requireContext()).read(imagePath)
+                binding.imgProfileDefault.setImageBitmap(bitmap)
+            }
         }
     }
 
@@ -99,8 +112,8 @@ class ProfileFragment private constructor() : Fragment() {
             when {
                 // 갤러리 접근 권한이 있는 경우
                 ContextCompat.checkSelfPermission(
-                        this.requireContext(),
-                        android.Manifest.permission.READ_EXTERNAL_STORAGE
+                    this.requireContext(),
+                    android.Manifest.permission.READ_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_GRANTED
                 -> {
                     navigateGallery()
@@ -114,8 +127,8 @@ class ProfileFragment private constructor() : Fragment() {
 
                 // 권한 요청 하기(requestPermissions) -> 갤러리 접근(onRequestPermissionResult)
                 else -> requestPermissions(
-                        arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
-                        1000
+                    arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                    1000
                 )
             }
 
@@ -123,9 +136,9 @@ class ProfileFragment private constructor() : Fragment() {
     }
 
     override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            grantResults: IntArray
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
@@ -162,8 +175,27 @@ class ProfileFragment private constructor() : Fragment() {
                 val selectedImageUri: Uri? = data?.data
                 if (selectedImageUri != null) {
                     img_Profile_default.setImageURI(selectedImageUri)
+                    val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        ImageDecoder.decodeBitmap(
+                            ImageDecoder.createSource(
+                                requireContext().contentResolver,
+                                selectedImageUri
+                            )
+                        )
+                    } else {
+                        MediaStore.Images.Media.getBitmap(
+                            requireContext().contentResolver,
+                            selectedImageUri
+                        )
+                    }
+                    val path = ImageManager(requireContext()).save(bitmap)
+                    requireContext().getSharedPreferences("user", 0).edit().apply {
+                        putString("image", path)
+                        apply()
+                    }
                 } else {
-                    Toast.makeText(this.requireContext(), "사진을 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this.requireContext(), "사진을 가져오지 못했습니다.", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
             else -> {
@@ -174,14 +206,14 @@ class ProfileFragment private constructor() : Fragment() {
 
     private fun showPermissionContextPopup() {
         AlertDialog.Builder(this.requireContext())
-                .setTitle("권한이 필요합니다.")
-                .setMessage("프로필 이미지를 바꾸기 위해서는 갤러리 접근 권한이 필요합니다.")
-                .setPositiveButton("동의하기") { _, _ ->
-                    requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1000)
-                }
-                .setNegativeButton("취소하기") { _, _ -> }
-                .create()
-                .show()
+            .setTitle("권한이 필요합니다.")
+            .setMessage("프로필 이미지를 바꾸기 위해서는 갤러리 접근 권한이 필요합니다.")
+            .setPositiveButton("동의하기") { _, _ ->
+                requestPermissions(arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), 1000)
+            }
+            .setNegativeButton("취소하기") { _, _ -> }
+            .create()
+            .show()
     }
 
 

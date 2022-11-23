@@ -15,27 +15,28 @@
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/activity_main.xml" value="0.2518518518518518" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/activity_main2.xml" value="0.5" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/activity_register.xml" value="0.5" />
-        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/activity_write.xml" value="0.5" />
+        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/activity_write.xml" value="0.1" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/activity_write_diary.xml" value="0.5" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/app_bar_main.xml" value="0.33" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/content_main.xml" value="0.473731884057971" />
-        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_diary.xml" value="0.25" />
+        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_diary.xml" value="0.5" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_gallery.xml" value="0.473731884057971" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_home.xml" value="0.473731884057971" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_home_fragement.xml" value="0.5" />
-        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_profile.xml" value="0.39842578710644677" />
+        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_setting.xml" value="0.5526041666666667" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_slideshow.xml" value="0.473731884057971" />
-        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_summary.xml" value="0.5" />
-        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_todolist.xml" value="0.31302083333333336" />
+        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_summary.xml" value="0.7372311827956989" />
+        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_todolist.xml" value="0.25" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/fragment_write_fragement.xml" value="0.33" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/nav_header_main.xml" value="0.5536458333333333" />
-        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/row_card_template.xml" value="0.1" />
+        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/row_card_template.xml" value="0.33" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/layout/row_wirtepage_template.xml" value="0.82890625" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/menu/activity_main_drawer.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/menu/main_activity2.xml" value="0.5536458333333333" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/menu/navi_menu.xml" value="0.5206106870229008" />
         <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/menu/toolbar_menu.xml" value="0.3509259259259259" />
+        <entry key="..\:/Users/Kimmeohyun/Documents/GitHub/2022_LATTE_PRJ/app/src/main/res/xml/preference.xml" value="0.5" />
         <entry key="..\:/Users/rlaeo/Desktop/KotlinEX1/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/rlaeo/Desktop/KotlinEX1/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/rlaeo/Desktop/KotlinEX1/app/src/main/res/layout/activity_register.xml" value="0.264" />
@@ -54,7 +55,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.7372311827956989" />
+        <option name="scale" value="0.5" />
       </ProjectState>
     </option>
   </component>

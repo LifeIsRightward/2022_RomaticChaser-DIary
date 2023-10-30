@@ -7,5 +7,5 @@
 [SW전시회 판넬(20195119 김대현).pptx](https://github.com/LifeIsRightward/2022_LATTE_PRJ/files/10047888/SW.20195119.pptx)
 
 
-<img src ="https://github.com/LifeIsRightward/2022_RomaticChaser-DIary/assets/90908005/d3330abd-5635-40de-a87b-a1b89f443910" width = "60">
+<img src ="https://github.com/LifeIsRightward/2022_RomaticChaser-DIary/assets/90908005/d3330abd-5635-40de-a87b-a1b89f443910" width = "60%">
 
